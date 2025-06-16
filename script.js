@@ -1,40 +1,43 @@
-const board = Chessboard('board', {
-  draggable: true,
-  position: 'start',
-  onDrop: handleMove
+const canvas = document.getElementById("wheel");
+const ctx = canvas.getContext("2d");
+const textarea = document.getElementById("inputData");
+
+let entries = [];
+
+textarea.addEventListener("keydown", function (e) {
+  if (e.key === "Enter") {
+    e.preventDefault(); // Ngăn xuống dòng
+    const lines = textarea.value.trim().split("\n");
+    entries = lines.filter(line => line.trim() !== "");
+    drawWheel();
+  }
 });
 
-const game = new Chess();
+function drawWheel() {
+  const total = entries.length;
+  const radius = canvas.width / 2;
+  const angleStep = (2 * Math.PI) / total;
 
-function updateMoveList() {
-  const moves = game.history();
-  const container = document.getElementById('moves');
-  container.innerHTML = '<strong>Nước đi:</strong>';
-  moves.forEach((m, i) => {
-    const p = document.createElement('p');
-    p.textContent = `${Math.floor(i/2)+1}. ${i%2 === 0 ? 'Trắng' : 'Đen'}: ${m}`;
-    container.appendChild(p);
-  });
-  container.scrollTop = container.scrollHeight;
-}
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-function handleMove(source, target) {
-  const move = game.move({
-    from: source,
-    to: target,
-    promotion: 'q'
-  });
+  for (let i = 0; i < total; i++) {
+    const angle = i * angleStep;
+    // random màu
+    ctx.fillStyle = `hsl(${Math.random() * 360}, 70%, 60%)`;
+    ctx.beginPath();
+    ctx.moveTo(radius, radius);
+    ctx.arc(radius, radius, radius, angle, angle + angleStep);
+    ctx.closePath();
+    ctx.fill();
 
-  if (move === null) return 'snapback';
-  updateMoveList();
-  setTimeout(botMove, 500);
-}
-
-function botMove() {
-  const moves = game.moves();
-  if (game.game_over() || moves.length === 0) return;
-  const move = moves[Math.floor(Math.random() * moves.length)];
-  game.move(move);
-  board.position(game.fen());
-  updateMoveList();
+    // text
+    ctx.save();
+    ctx.translate(radius, radius);
+    ctx.rotate(angle + angleStep / 2);
+    ctx.fillStyle = "#000";
+    ctx.font = "16px sans-serif";
+    ctx.textAlign = "right";
+    ctx.fillText(entries[i], radius - 10, 5);
+    ctx.restore();
+  }
 }
