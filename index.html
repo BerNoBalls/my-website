@@ -1,19 +1,31 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Blog</title>
+  <title>Chess Game with Bot</title>
   <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/chessboardjs@1.0.0/dist/chessboard-1.0.0.min.css" />
 </head>
 <body>
   <div class="header">
-    <h1>Xin chào!,</h1>
-    <p>Mình là Bảo, mình là sinh viên năm 2 đang học tập tại trường đại học Mở TPHCM, chuyên ngành khoa học máy tính.</p>
+    <h1>Xin chào!</h1>
+    <p>Mình là Bảo, sinh viên năm 2 chuyên ngành Khoa học máy tính.</p>
   </div>
 
   <div class="content">
-    <p> Trang web này sẽ là Blog chia sẽ về trải nghiệm cá nhân của mình.</p>
+    <div class="chess-container">
+      <div id="board"></div>
+      <div id="moves"><strong>Nước đi:</strong></div>
+    </div>
   </div>
+
+  <footer class="footer">
+    <p>Contact: 2351010017Bao@ou.edu.vn</p>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/chess.js/0.10.3/chess.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chessboardjs@1.0.0/dist/chessboard-1.0.0.min.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
