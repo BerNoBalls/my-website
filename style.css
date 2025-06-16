@@ -1,0 +1,25 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+/* Phần 1: Header chiếm 1/3 chiều cao */
+.header {
+  background-color: #00704A; /* xanh Starbucks */
+  color: white;
+  height: 33vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Phần 2: Nội dung còn lại */
+.content {
+  background-color: #F5F5F5; /* xám nhạt hiện đại */
+  height: 67vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #333;
+}
