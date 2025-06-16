@@ -3,29 +3,28 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Chess Game with Bot</title>
+  <title>Kéo Búa Bao</title>
   <link rel="stylesheet" href="style.css" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/chessboardjs@1.0.0/dist/chessboard-1.0.0.min.css" />
 </head>
 <body>
   <div class="header">
-    <h1>Xin chào!</h1>
-    <p>Mình là Bảo, sinh viên năm 2 chuyên ngành Khoa học máy tính.</p>
+    <h1>🎮 Kéo Búa Bao với Bot</h1>
+    <p>Chọn một trong ba lựa chọn dưới đây:</p>
   </div>
 
   <div class="content">
-  <div class="wheel-wrapper">
-    <canvas id="wheel" width="400" height="400"></canvas>
-    <textarea id="inputData" placeholder="Nhập từng dòng, nhấn Enter để thêm..."></textarea>
+    <div class="choices">
+      <button onclick="play('rock')">✊ Kéo</button>
+      <button onclick="play('paper')">✋ Bao</button>
+      <button onclick="play('scissors')">✌️ Búa</button>
+    </div>
+    <div id="result"></div>
   </div>
-</div>
 
   <footer class="footer">
-    <p>Contact: 2351010017Bao@ou.edu.vn</p>
+    <p>© 2025 Bảo - OU 🎲</p>
   </footer>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/chess.js/0.10.3/chess.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/chessboardjs@1.0.0/dist/chessboard-1.0.0.min.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
